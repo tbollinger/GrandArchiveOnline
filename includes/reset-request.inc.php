@@ -1,5 +1,5 @@
 <?php
-include 'functions.inc.php';
+include DOC_ROOT . 'functions.inc.php';
 
 // First we check if the form was submitted.
 if (isset($_POST['reset-request-submit'])) {

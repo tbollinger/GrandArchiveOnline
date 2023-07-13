@@ -2,23 +2,22 @@
 
 error_reporting(E_ALL);
 
-include "WriteLog.php";
-include "GameLogic.php";
-include "GameTerms.php";
-include "HostFiles/Redirector.php";
-include "Libraries/SHMOPLibraries.php";
-include "Libraries/StatFunctions.php";
-include "Libraries/UILibraries.php";
-include "Libraries/PlayerSettings.php";
-include "Libraries/NetworkingLibraries.php";
-include "AI/CombatDummy.php";
-include "AI/EncounterAI.php";
-include "AI/PlayerMacros.php";
-include "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "WriteLog.php";
+include DOC_ROOT . "GameLogic.php";
+include DOC_ROOT . "GameTerms.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "Libraries/StatFunctions.php";
+include DOC_ROOT . "Libraries/UILibraries.php";
+include DOC_ROOT . "Libraries/PlayerSettings.php";
+include DOC_ROOT . "Libraries/NetworkingLibraries.php";
+include DOC_ROOT . "AI/CombatDummy.php";
+include DOC_ROOT . "AI/EncounterAI.php";
+include DOC_ROOT . "AI/PlayerMacros.php";
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
 require_once("Libraries/CoreLibraries.php");
-include_once "./includes/dbh.inc.php";
-include_once "./includes/functions.inc.php";
-include_once "APIKeys/APIKeys.php";
+include_once DOC_ROOT . "./includes/dbh.inc.php";
+include_once DOC_ROOT . "./includes/functions.inc.php";
+include_once DOC_ROOT . "APIKeys/APIKeys.php";
 
 SetHeaders();
 $_POST = json_decode(file_get_contents('php://input'), true);
@@ -39,7 +38,7 @@ $submission = json_encode($submission);
 $submission = json_decode($submission); //I don't know why it's not correctly parsing as objects all the way down here
 
 //First we need to parse the game state from the file
-include "ParseGamestate.php";
+include DOC_ROOT . "ParseGamestate.php";
 
 $otherPlayer = $currentPlayer == 1 ? 2 : 1;
 $skipWriteGamestate = false;
@@ -79,9 +78,9 @@ switch ($mode) {
   case 26: //Change setting
     $userID = "";
     if (!$isSimulation) {
-      include "MenuFiles/ParseGamefile.php";
-      include_once "./includes/dbh.inc.php";
-      include_once "./includes/functions.inc.php";
+      include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+      include_once DOC_ROOT . "./includes/dbh.inc.php";
+      include_once DOC_ROOT . "./includes/functions.inc.php";
       if ($playerID == 1) $userID = $p1id;
       else $userID = $p2id;
     }
@@ -138,7 +137,7 @@ switch ($mode) {
       $isValid = false;
       break;
     }
-    $response->redirectLink = $redirectPath . "/Roguelike/ContinueAdventure.php?gameName=" . $roguelikeGameID . "&playerID=1&health=" . GetHealth(1);
+    $response->redirectLink =  "/Roguelike/ContinueAdventure.php?gameName=" . $roguelikeGameID . "&playerID=1&health=" . GetHealth(1);
     break;
   default:
     break;
@@ -151,8 +150,8 @@ if ($inGameStatus == $GameStatus_Rematch) {
   if (file_exists($origDeck)) copy($origDeck, "./Games/" . $gameName . "/p1Deck.txt");
   $origDeck = "./Games/" . $gameName . "/p2DeckOrig.txt";
   if (file_exists($origDeck)) copy($origDeck, "./Games/" . $gameName . "/p2Deck.txt");
-  include "MenuFiles/ParseGamefile.php";
-  include "MenuFiles/WriteGamefile.php";
+  include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+  include DOC_ROOT . "MenuFiles/WriteGamefile.php";
   $gameStatus = (IsPlayerAI(2) ? $MGS_ReadyToStart : $MGS_ChooseFirstPlayer);
   SetCachePiece($gameName, 14, $gameStatus);
   $firstPlayer = 1;
@@ -162,7 +161,7 @@ if ($inGameStatus == $GameStatus_Rematch) {
   WriteLog("Player $firstPlayerChooser lost and will choose first player for the rematch.");
   WriteGameFile();
   $turn[0] = "REMATCH";
-  include "WriteGamestate.php";
+  include DOC_ROOT . "WriteGamestate.php";
   $currentTime = round(microtime(true) * 1000);
   SetCachePiece($gameName, 2, $currentTime);
   SetCachePiece($gameName, 3, $currentTime);
@@ -192,7 +191,7 @@ if (!$skipWriteGamestate) {
     $currentPlayerActivity = 0;
   }
   DoGamestateUpdate();
-  include "WriteGamestate.php";
+  include DOC_ROOT . "WriteGamestate.php";
 }
 
 if ($makeCheckpoint) MakeGamestateBackup();

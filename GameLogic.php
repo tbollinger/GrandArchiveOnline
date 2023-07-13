@@ -1,23 +1,23 @@
 <?php
 
-include "Search.php";
-include "CardLogic.php";
-include "AuraAbilities.php";
-include "ItemAbilities.php";
-include "AllyAbilities.php";
-include "PermanentAbilities.php";
-include "LandmarkAbilities.php";
-include "CharacterAbilities.php";
-include "WeaponLogic.php";
-include "MZLogic.php";
-include "Classes/Deck.php";
-include "DecisionQueue/DecisionQueueEffects.php";
-include "CurrentEffectAbilities.php";
-include "CombatChain.php";
+include DOC_ROOT . "Search.php";
+include DOC_ROOT . "CardLogic.php";
+include DOC_ROOT . "AuraAbilities.php";
+include DOC_ROOT . "ItemAbilities.php";
+include DOC_ROOT . "AllyAbilities.php";
+include DOC_ROOT . "PermanentAbilities.php";
+include DOC_ROOT . "LandmarkAbilities.php";
+include DOC_ROOT . "CharacterAbilities.php";
+include DOC_ROOT . "WeaponLogic.php";
+include DOC_ROOT . "MZLogic.php";
+include DOC_ROOT . "Classes/Deck.php";
+include DOC_ROOT . "DecisionQueue/DecisionQueueEffects.php";
+include DOC_ROOT . "CurrentEffectAbilities.php";
+include DOC_ROOT . "CombatChain.php";
 
 function DecisionQueueStaticEffect($phase, $player, $parameter, $lastResult)
 {
-  global $redirectPath, $playerID, $gameName;
+  global $playerID, $gameName;
   global $currentPlayer, $combatChain, $defPlayer;
   global $combatChainState;
   global $defCharacter, $CS_NumCharged, $otherPlayer;
@@ -1166,8 +1166,8 @@ function DecisionQueueStaticEffect($phase, $player, $parameter, $lastResult)
       SetCachePiece($gameName, 2, $currentTime);
       SetCachePiece($gameName, 3, $currentTime);
       ClearGameFiles($gameName);
-      include "MenuFiles/ParseGamefile.php";
-      header("Location: " . $redirectPath . "/Start.php?gameName=$gameName&playerID=$playerID");
+      include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+      header("Location: " .  "/Start.php?gameName=$gameName&playerID=$playerID");
       exit;
     case "REMATCH":
       global $GameStatus_Rematch, $inGameStatus;

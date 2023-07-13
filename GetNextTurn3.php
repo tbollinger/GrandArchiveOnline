@@ -1,9 +1,8 @@
 <?php
 
-include 'Libraries/HTTPLibraries.php';
-include "HostFiles/Redirector.php";
-include "Libraries/SHMOPLibraries.php";
-include "WriteLog.php";
+include DOC_ROOT . 'Libraries/HTTPLibraries.php';
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "WriteLog.php";
 
 // array holding allowed Origin domains
 SetHeaders();
@@ -128,32 +127,32 @@ if ($lastUpdate != 0 && $cacheVal <= $lastUpdate) {
   exit;
 } else {
   //First we need to parse the game state from the file
-  include "ParseGamestate.php";
-  include 'GameLogic.php';
-  include "GameTerms.php";
-  include "Libraries/UILibraries2.php";
-  include "Libraries/StatFunctions.php";
-  include "Libraries/PlayerSettings.php";
+  include DOC_ROOT . "ParseGamestate.php";
+  include DOC_ROOT . 'GameLogic.php';
+  include DOC_ROOT . "GameTerms.php";
+  include DOC_ROOT . "Libraries/UILibraries2.php";
+  include DOC_ROOT . "Libraries/StatFunctions.php";
+  include DOC_ROOT . "Libraries/PlayerSettings.php";
 
   $isReactFE = true;
 
   if ($opponentDisconnected && !IsGameOver()) {
-    include_once "./includes/dbh.inc.php";
-    include_once "./includes/functions.inc.php";
+    include_once DOC_ROOT . "./includes/dbh.inc.php";
+    include_once DOC_ROOT . "./includes/functions.inc.php";
     PlayerLoseHealth($otherP, GetHealth($otherP));
-    include "WriteGamestate.php";
+    include DOC_ROOT . "WriteGamestate.php";
   } else if ($opponentInactive && !IsGameOver()) {
     $currentPlayerActivity = 2;
     WriteLog("The current player is inactive.");
-    include "WriteGamestate.php";
+    include DOC_ROOT . "WriteGamestate.php";
     GamestateUpdated($gameName);
   }
 
   if ($turn[0] == "REMATCH") {
-    include "MenuFiles/ParseGamefile.php";
-    include "MenuFiles/WriteGamefile.php";
+    include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+    include DOC_ROOT . "MenuFiles/WriteGamefile.php";
     if ($gameStatus == $MGS_GameStarted) {
-      include "AI/CombatDummy.php";
+      include DOC_ROOT . "AI/CombatDummy.php";
       $origDeck = "./Games/" . $gameName . "/p1DeckOrig.txt";
       if (file_exists($origDeck)) copy($origDeck, "./Games/" . $gameName . "/p1Deck.txt");
       $origDeck = "./Games/" . $gameName . "/p2DeckOrig.txt";
@@ -200,7 +199,7 @@ if ($lastUpdate != 0 && $cacheVal <= $lastUpdate) {
 
   // send initial on-load information if our first time connecting.
   if ($lastUpdate == 0) {
-    include "MenuFiles/ParseGamefile.php";
+    include DOC_ROOT . "MenuFiles/ParseGamefile.php";
     $initialLoad = new stdClass();
     $initialLoad->playerName = $playerID == 1 ? $p1uid : $p2uid;
     $initialLoad->opponentName = $playerID == 1 ? $p2uid : $p1uid;

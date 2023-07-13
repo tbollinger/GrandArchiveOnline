@@ -1,11 +1,11 @@
 <?php
 
 
-include_once 'MenuBar.php';
-include_once "CardDictionary.php";
-include_once "./Libraries/UILibraries2.php";
-include_once './includes/functions.inc.php';
-include_once "./includes/dbh.inc.php";
+include_once DOC_ROOT . 'MenuBar.php';
+include_once DOC_ROOT . "CardDictionary.php";
+include_once DOC_ROOT . "./Libraries/UILibraries2.php";
+include_once DOC_ROOT . './includes/functions.inc.php';
+include_once DOC_ROOT . "./includes/dbh.inc.php";
 
   $conn = GetDBConnection();
   $sql = "SELECT usersId, usersUid FROM users";

@@ -1,6 +1,6 @@
 <?php
-include_once './MenuBar.php';
-include_once './AccountFiles/AccountSessionAPI.php';
+include_once DOC_ROOT . './MenuBar.php';
+include_once DOC_ROOT . './AccountFiles/AccountSessionAPI.php';
 
 if (IsUserLoggedIn()) {
   header("Location: ./game/MainMenu.php");
@@ -43,5 +43,5 @@ if (IsUserLoggedIn()) {
   </div>
 
 <?php
-include_once './Disclaimer.php';
+include_once DOC_ROOT . './Disclaimer.php';
 ?>

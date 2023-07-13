@@ -1,13 +1,13 @@
 <?php
 
-include_once 'MenuBar.php';
+include_once DOC_ROOT . 'MenuBar.php';
 
 require_once './Assets/patreon-php-master/src/OAuth.php';
 require_once './Assets/patreon-php-master/src/API.php';
 require_once './Assets/patreon-php-master/src/PatreonLibraries.php';
-include_once './Assets/patreon-php-master/src/PatreonDictionary.php';
-include_once './includes/functions.inc.php';
-include_once "./includes/dbh.inc.php";
+include_once DOC_ROOT . './Assets/patreon-php-master/src/PatreonDictionary.php';
+include_once DOC_ROOT . './includes/functions.inc.php';
+include_once DOC_ROOT . "./includes/dbh.inc.php";
 
 if (!isset($_SESSION["useruid"])) {
   echo ("Please login to view this page.");

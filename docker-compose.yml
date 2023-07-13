@@ -2,12 +2,13 @@ version: "3.7"
 services:
   web-server:
     build:
-      dockerfile: Dockerfile
+      dockerfile: ./Docker/Dockerfile
       context: .
     restart: always
     volumes:
-      - "./:/var/www/html/GrandArchiveOnline"
-    command: bash "/var/www/html/GrandArchiveOnline/docker-entrypoint.sh"
+      - "./:/var/www/html"
+      - "./Docker/apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf"
+    command: bash "/var/www/html/Docker/docker-entrypoint.sh"
     ports:
       - "8080:80"
     depends_on:
@@ -18,8 +19,8 @@ services:
       MYSQL_ROOT_PASSWORD: "secret"
       MYSQL_SERVER_NAME: "mysql-server"
       MYSQL_SERVER_USER_NAME: "root"
-      REDIS_HOST: "app_redis"
-      REDIS_ENABLED: true
+      REDIS_HOST: "redis"
+      REDIS_ENABLED: "true"
       DOMAIN: "localhost"
   mysql-server:
     image: mysql:latest
@@ -44,7 +45,7 @@ services:
       - "5001:80"
   redis:
     image: redis:7.0
-    container_name: app_redis
+    restart: always
     ports:
       - "6382:6379"
 volumes:

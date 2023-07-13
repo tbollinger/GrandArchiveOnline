@@ -1,13 +1,12 @@
 <?php
 
-include_once 'Assets/patreon-php-master/src/OAuth.php';
-include_once 'Assets/patreon-php-master/src/API.php';
-include_once 'Assets/patreon-php-master/src/PatreonLibraries.php';
-include_once 'Assets/patreon-php-master/src/PatreonDictionary.php';
-include_once 'includes/functions.inc.php';
-include_once 'includes/dbh.inc.php';
-include_once 'Libraries/HTTPLibraries.php';
-include_once 'HostFiles/Redirector.php';
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/OAuth.php';
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/API.php';
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/PatreonLibraries.php';
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/PatreonDictionary.php';
+include_once DOC_ROOT . 'includes/functions.inc.php';
+include_once DOC_ROOT . 'includes/dbh.inc.php';
+include_once DOC_ROOT . 'Libraries/HTTPLibraries.php';
 session_start();
 
 if (!isset($_SESSION["userid"])) {

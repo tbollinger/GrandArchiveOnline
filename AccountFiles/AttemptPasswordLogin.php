@@ -1,10 +1,10 @@
 <?php
 
-include_once '../Assets/patreon-php-master/src/PatreonLibraries.php';
-include_once '../Assets/patreon-php-master/src/API.php';
-include_once '../Assets/patreon-php-master/src/PatreonDictionary.php';
-include_once '../Database/ConnectionManager.php';
-include_once './AccountDatabaseAPI.php';
+include_once DOC_ROOT . '../Assets/patreon-php-master/src/PatreonLibraries.php';
+include_once DOC_ROOT . '../Assets/patreon-php-master/src/API.php';
+include_once DOC_ROOT . '../Assets/patreon-php-master/src/PatreonDictionary.php';
+include_once DOC_ROOT . '../Database/ConnectionManager.php';
+include_once DOC_ROOT . './AccountDatabaseAPI.php';
 
 if (isset($_POST["submit"])) {
 

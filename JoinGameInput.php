@@ -1,20 +1,20 @@
 <?php
 
-include "WriteLog.php";
-include "Libraries/HTTPLibraries.php";
-include "Libraries/SHMOPLibraries.php";
-include "APIKeys/APIKeys.php";
-include_once 'includes/functions.inc.php';
-include_once 'includes/dbh.inc.php';
-include_once 'CoreLogic.php';
-include_once 'Libraries/CoreLibraries.php';
+include DOC_ROOT . "WriteLog.php";
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "APIKeys/APIKeys.php";
+include_once DOC_ROOT . 'includes/functions.inc.php';
+include_once DOC_ROOT . 'includes/dbh.inc.php';
+include_once DOC_ROOT . 'CoreLogic.php';
+include_once DOC_ROOT . 'Libraries/CoreLibraries.php';
 
-include_once 'LZCompressor/LZContext.php';
-include_once 'LZCompressor/LZData.php';
-include_once 'LZCompressor/LZReverseDictionary.php';
-include_once 'LZCompressor/LZString.php';
-include_once 'LZCompressor/LZUtil.php';
-include_once 'LZCompressor/LZUtil16.php';
+include_once DOC_ROOT . 'LZCompressor/LZContext.php';
+include_once DOC_ROOT . 'LZCompressor/LZData.php';
+include_once DOC_ROOT . 'LZCompressor/LZReverseDictionary.php';
+include_once DOC_ROOT . 'LZCompressor/LZString.php';
+include_once DOC_ROOT . 'LZCompressor/LZUtil.php';
+include_once DOC_ROOT . 'LZCompressor/LZUtil16.php';
 
 use LZCompressor\LZString as LZString;
 
@@ -64,16 +64,15 @@ if ($deck == "" && !IsDeckLinkValid($decklink)) {
   exit;
 }
 
-include "HostFiles/Redirector.php";
-include "CardDictionary.php";
-include "MenuFiles/ParseGamefile.php";
-include "MenuFiles/WriteGamefile.php";
+include DOC_ROOT . "CardDictionary.php";
+include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+include DOC_ROOT . "MenuFiles/WriteGamefile.php";
 
 if ($matchup == "" && $playerID == 2 && $gameStatus >= $MGS_Player2Joined) {
   if ($gameStatus >= $MGS_GameStarted) {
-    header("Location: " . $redirectPath . "/NextTurn4.php?gameName=$gameName&playerID=3");
+    header("Location: " .  "/NextTurn4.php?gameName=$gameName&playerID=3");
   } else {
-    header("Location: " . $redirectPath . "/MainMenu.php");
+    header("Location: " .  "/MainMenu.php");
   }
   WriteGameFile();
   exit;
@@ -158,8 +157,8 @@ if ($decklink != "") {
   copy($filename, "./Games/" . $gameName . "/p" . $playerID . "DeckOrig.txt");
 
   if (isset($_SESSION["userid"])) {
-    include_once './includes/functions.inc.php';
-    include_once "./includes/dbh.inc.php";
+    include_once DOC_ROOT . './includes/functions.inc.php';
+    include_once DOC_ROOT . "./includes/dbh.inc.php";
     /*
     $deckbuilderID = GetDeckBuilderId($_SESSION["userid"], $decklink);
     if ($deckbuilderID != "") {
@@ -171,8 +170,8 @@ if ($decklink != "") {
 
   if ($favoriteDeck == "on" && isset($_SESSION["userid"])) {
     //Save deck
-    include_once './includes/functions.inc.php';
-    include_once "./includes/dbh.inc.php";
+    include_once DOC_ROOT . './includes/functions.inc.php';
+    include_once DOC_ROOT . "./includes/dbh.inc.php";
     addFavoriteDeck($_SESSION["userid"], $decklink, $deckName, $character, $deckFormat);
   }
 } else {
@@ -237,7 +236,7 @@ if ($matchup == "") {
 }
 
 session_write_close();
-header("Location: " . $redirectPath . "/GameLobby.php?gameName=$gameName&playerID=$playerID");
+header("Location: " .  "/GameLobby.php?gameName=$gameName&playerID=$playerID");
 
 function GetAltCardID($cardID)
 {

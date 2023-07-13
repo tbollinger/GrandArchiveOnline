@@ -2,7 +2,7 @@
 function ProcessInput($playerID, $mode, $buttonInput, $cardID, $chkCount, $chkInput, $isSimulation=false, $inputText="")
 {
   global $gameName, $currentPlayer, $mainPlayer, $turn, $CS_CharacterIndex, $CS_PlayIndex, $decisionQueue, $CS_NextNAAInstant, $skipWriteGamestate, $combatChain, $landmarks;
-  global $SET_PassDRStep, $actionPoints, $currentPlayerActivity, $redirectPath, $CS_PlayedAsInstant;
+  global $SET_PassDRStep, $actionPoints, $currentPlayerActivity, $CS_PlayedAsInstant;
   global $dqState, $layers, $CS_ArsenalFacing, $CCS_HasAimCounter, $combatChainState;
   global $roguelikeGameID;
   switch ($mode) {
@@ -311,9 +311,9 @@ function ProcessInput($playerID, $mode, $buttonInput, $cardID, $chkCount, $chkIn
       $userID = "";
       if(!$isSimulation)
       {
-        include "MenuFiles/ParseGamefile.php";
-        include_once "./includes/dbh.inc.php";
-        include_once "./includes/functions.inc.php";
+        include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+        include_once DOC_ROOT . "./includes/dbh.inc.php";
+        include_once DOC_ROOT . "./includes/functions.inc.php";
         if($playerID == 1) $userID = $p1id;
         else $userID = $p2id;
       }
@@ -535,12 +535,12 @@ function ProcessInput($playerID, $mode, $buttonInput, $cardID, $chkCount, $chkIn
       break;
     case 100001: //Main Menu
       if($isSimulation) return;
-      header("Location: " . $redirectPath . "/MainMenu.php");
+      header("Location: " .  "/MainMenu.php");
       exit;
     case 100002: //Concede
       if($isSimulation) return;
-      include_once "./includes/dbh.inc.php";
-      include_once "./includes/functions.inc.php";
+      include_once DOC_ROOT . "./includes/dbh.inc.php";
+      include_once DOC_ROOT . "./includes/functions.inc.php";
       $conceded = true;
       if(!IsGameOver()) PlayerLoseHealth($playerID, 999);
       break;
@@ -575,8 +575,8 @@ function ProcessInput($playerID, $mode, $buttonInput, $cardID, $chkCount, $chkIn
       if($isSimulation) return;
       if($currentPlayerActivity == 2)
       {
-        include_once "./includes/dbh.inc.php";
-        include_once "./includes/functions.inc.php";
+        include_once DOC_ROOT . "./includes/dbh.inc.php";
+        include_once DOC_ROOT . "./includes/functions.inc.php";
         $otherPlayer = ($playerID == 1 ? 2 : 1);
         if(!IsGameOver()) PlayerLoseHealth($otherPlayer, GetHealth($otherPlayer));
         WriteLog("The opponent forfeit due to inactivity.");
@@ -584,9 +584,9 @@ function ProcessInput($playerID, $mode, $buttonInput, $cardID, $chkCount, $chkIn
       break;
     case 100010: //Grant badge
       if($isSimulation) return;
-      include "MenuFiles/ParseGamefile.php";
-      include_once "./includes/dbh.inc.php";
-      include_once "./includes/functions.inc.php";
+      include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+      include_once DOC_ROOT . "./includes/dbh.inc.php";
+      include_once DOC_ROOT . "./includes/functions.inc.php";
       $myName = ($playerID == 1 ? $p1uid : $p2uid);
       $theirName = ($playerID == 1 ? $p2uid : $p1uid);
       if($playerID == 1) $userID = $p1id;
@@ -599,7 +599,7 @@ function ProcessInput($playerID, $mode, $buttonInput, $cardID, $chkCount, $chkIn
       break;
     case 100011: //Resume adventure (roguelike)
       if($roguelikeGameID == "") break;
-      header("Location: " . $redirectPath . "/Roguelike/ContinueAdventure.php?gameName=" . $roguelikeGameID . "&playerID=1&health=" . GetHealth(1));
+      header("Location: " .  "/Roguelike/ContinueAdventure.php?gameName=" . $roguelikeGameID . "&playerID=1&health=" . GetHealth(1));
       break;
     case 100012: //Create Replay
       if(!file_exists("./Games/" . $gameName . "/origGamestate.txt"))
@@ -607,7 +607,7 @@ function ProcessInput($playerID, $mode, $buttonInput, $cardID, $chkCount, $chkIn
         WriteLog("Failed to create replay; original gamestate file failed to create.");
         return true;
       }
-      include "MenuFiles/ParseGamefile.php";
+      include DOC_ROOT . "MenuFiles/ParseGamefile.php";
       WriteLog("Player " . $playerID . " saved this game as a replay.");
       $pid = ($playerID == 1 ? $p1id : $p2id);
       $path = "./Replays/" . $pid . "/";
@@ -685,7 +685,7 @@ function IsModeAllowedForSpectators($mode)
 
 function ExitProcessInput()
 {
-  global $playerID, $redirectPath, $gameName;
+  global $playerID, $gameName;
   exit;
 }
 
@@ -854,7 +854,7 @@ function ResolveChainLink()
   } else {
     if ($combatChainState[$CCS_CombatDamageReplaced] == 1) $damage = 0;
     else $damage = $totalAttack - $totalDefense;
-    DamageTrigger($defPlayer, $damage, "COMBAT", $combatChain[0]); //Include prevention
+    DamageTrigger($defPlayer, $damage, "COMBAT", $combatChain[0]); //Include DOC_ROOT . prevention
     AddDecisionQueue("RESOLVECOMBATDAMAGE", $mainPlayer, "-");
   }
   ProcessDecisionQueue();

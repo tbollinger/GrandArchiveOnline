@@ -1,8 +1,8 @@
 <?php
 
-include "EncounterPriorityValues.php";
-include "EncounterPriorityLogic.php";
-include "EncounterPlayLogic.php";
+include DOC_ROOT . "EncounterPriorityValues.php";
+include DOC_ROOT . "EncounterPriorityLogic.php";
+include DOC_ROOT . "EncounterPlayLogic.php";
 
 function EncounterAI()
 {

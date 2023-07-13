@@ -1,13 +1,12 @@
 <?php
 ob_start();
-include "WriteLog.php";
-include "CardDictionary.php";
-include "HostFiles/Redirector.php";
-include "Libraries/UILibraries2.php";
-include "Libraries/SHMOPLibraries.php";
-include_once "Libraries/PlayerSettings.php";
-include_once "Libraries/HTTPLibraries.php";
-include_once "Assets/patreon-php-master/src/PatreonDictionary.php";
+include DOC_ROOT . "WriteLog.php";
+include DOC_ROOT . "CardDictionary.php";
+include DOC_ROOT . "Libraries/UILibraries2.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include_once DOC_ROOT . "Libraries/PlayerSettings.php";
+include_once DOC_ROOT . "Libraries/HTTPLibraries.php";
+include_once DOC_ROOT . "Assets/patreon-php-master/src/PatreonDictionary.php";
 ob_end_clean();
 
 session_start();
@@ -26,12 +25,12 @@ if (($playerID == 1 || $playerID == 2) && $authKey == "") {
 }
 
 if (!file_exists("./Games/" . $gameName . "/GameFile.txt")) {
-  header("Location: " . $redirectPath . "/MainMenu.php"); //If the game file happened to get deleted from inactivity, redirect back to the main menu instead of erroring out
+  header("Location: " .  "/MainMenu.php"); //If the game file happened to get deleted from inactivity, redirect back to the main menu instead of erroring out
   exit;
 }
 
 ob_start();
-include "MenuFiles/ParseGamefile.php";
+include DOC_ROOT . "MenuFiles/ParseGamefile.php";
 ob_end_clean();
 
 $targetAuth = ($playerID == 1 ? $p1Key : $p2Key);
@@ -46,7 +45,7 @@ $theirName = ($playerID == 1 ? $p2uid : $p1uid);
 if ($gameStatus == $MGS_GameStarted) {
   $authKey = ($playerID == 1 ? $p1Key : $p2Key);
   if(isset($gameUIPath)) header("Location: " . $gameUIPath . "?gameName=$gameName&playerID=$playerID");
-  else header("Location: " . $redirectPath . "/NextTurn4.php?gameName=$gameName&playerID=$playerID");
+  else header("Location: " .  "/NextTurn4.php?gameName=$gameName&playerID=$playerID");
   exit;
 }
 
@@ -191,7 +190,7 @@ $isMobile = IsMobile();
       usort($matchups, "sortMatchupsAlphabetically");
       for ($i = 0; $i < count($matchups); ++$i) {
         echo ("<div style='cursor:pointer; padding:5px; font-size:24px;'>");
-        $matchuplink = $redirectPath . "/JoinGameInput.php?gameName=" . $gameName . "&playerID=" . $playerID . "&fabdb=" . $decklink . "&matchup=" . $matchups[$i]->{"matchupId"};
+        $matchuplink =  "/JoinGameInput.php?gameName=" . $gameName . "&playerID=" . $playerID . "&fabdb=" . $decklink . "&matchup=" . $matchups[$i]->{"matchupId"};
         echo ("<a href='" . $matchuplink . "'>");
         echo ("<input type='button' value='" . $matchups[$i]->{"name"} . "' />");
         echo ("</a>");
@@ -570,5 +569,5 @@ $isMobile = IsMobile();
   ?>
 
   <?php
-  include_once 'Disclaimer.php'
+  include_once DOC_ROOT . 'Disclaimer.php'
   ?>

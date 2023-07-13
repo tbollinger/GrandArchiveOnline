@@ -1,7 +1,7 @@
 <?php
 
-//include "ParseGamestate.php";
-//include "WriteLog.php";
+//include DOC_ROOT . "ParseGamestate.php";
+//include DOC_ROOT . "WriteLog.php";
 
 array_push($layerPriority, ShouldHoldPriority(1));
 array_push($layerPriority, ShouldHoldPriority(2));
@@ -35,7 +35,7 @@ AddDecisionQueue("STARTTURNABILITIES", $mainPlayer, "-"); //CR 2.0 4.2 Start Pha
 ProcessDecisionQueue();
 
 DoGamestateUpdate();
-include "WriteGamestate.php";
+include DOC_ROOT . "WriteGamestate.php";
 
 if($MakeStartTurnBackup) MakeStartTurnBackup();
 if($MakeStartGameBackup) MakeGamestateBackup("origGamestate.txt");

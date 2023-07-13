@@ -1,15 +1,14 @@
 <?php
 
 ob_start();
-include "HostFiles/Redirector.php";
-include "Libraries/HTTPLibraries.php";
-include "Libraries/SHMOPLibraries.php";
-include_once "Libraries/PlayerSettings.php";
-include_once 'Assets/patreon-php-master/src/PatreonDictionary.php';
-include_once "./AccountFiles/AccountDatabaseAPI.php";
-include_once './includes/functions.inc.php';
-include_once './includes/dbh.inc.php';
-include_once './Database/ConnectionManager.php';
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include_once DOC_ROOT . "Libraries/PlayerSettings.php";
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/PatreonDictionary.php';
+include_once DOC_ROOT . "./AccountFiles/AccountDatabaseAPI.php";
+include_once DOC_ROOT . './includes/functions.inc.php';
+include_once DOC_ROOT . './includes/dbh.inc.php';
+include_once DOC_ROOT . './Database/ConnectionManager.php';
 ob_end_clean();
 
 $deck = TryGET("deck");
@@ -40,9 +39,9 @@ session_start();
 
 if (!isset($_SESSION["userid"])) {
   if (isset($_COOKIE["rememberMeToken"])) {
-    include_once './Assets/patreon-php-master/src/PatreonLibraries.php';
-    include_once './Assets/patreon-php-master/src/API.php';
-    include_once './Assets/patreon-php-master/src/PatreonDictionary.php';
+    include_once DOC_ROOT . './Assets/patreon-php-master/src/PatreonLibraries.php';
+    include_once DOC_ROOT . './Assets/patreon-php-master/src/API.php';
+    include_once DOC_ROOT . './Assets/patreon-php-master/src/PatreonDictionary.php';
     loginFromCookie();
   }
 }
@@ -114,7 +113,7 @@ $p1StartingHealth = $startingHealth;
 
 $filename = "./Games/" . $gameName . "/GameFile.txt";
 $gameFileHandler = fopen($filename, "w");
-include "MenuFiles/WriteGamefile.php";
+include DOC_ROOT . "MenuFiles/WriteGamefile.php";
 WriteGameFile();
 
 $filename = "./Games/" . $gameName . "/gamelog.txt";

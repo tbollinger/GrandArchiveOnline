@@ -1,8 +1,8 @@
 <?php
 
-  include_once '../Libraries/HTTPLibraries.php';
-  include_once '../Libraries/HTTPLibraries.php';
-  include_once "../includes/dbh.inc.php";
+  include_once DOC_ROOT . '../Libraries/HTTPLibraries.php';
+  include_once DOC_ROOT . '../Libraries/HTTPLibraries.php';
+  include_once DOC_ROOT . "../includes/dbh.inc.php";
 
   $decklink = TryGet("decklink", "");
 

@@ -1,7 +1,7 @@
 <?php
 
-include "Constants.php";
-include "GeneratedCode/GeneratedCardDictionaries.php";
+include DOC_ROOT . "Constants.php";
+include DOC_ROOT . "GeneratedCode/GeneratedCardDictionaries.php";
 
 function CardType($cardID)
 {

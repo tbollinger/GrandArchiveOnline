@@ -1,7 +1,7 @@
 <?php
 
-  include './zzImageConverter.php';
-  include './Libraries/Trie.php';
+  include DOC_ROOT . './zzImageConverter.php';
+  include DOC_ROOT . './Libraries/Trie.php';
 
   $hasMoreData = true;
   $page = 1;

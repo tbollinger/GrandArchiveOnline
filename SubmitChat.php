@@ -1,7 +1,7 @@
 <?php
 
-include "Libraries/HTTPLibraries.php";
-include "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
 SetHeaders();
 
 $gameName = $_GET["gameName"];

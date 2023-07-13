@@ -1,7 +1,7 @@
 <?php
 
-include 'GameLogic.php';
-include './zzImageConverter.php';
+include DOC_ROOT . 'GameLogic.php';
+include DOC_ROOT . './zzImageConverter.php';
 
 $set = "OUT";
 $count = 0;

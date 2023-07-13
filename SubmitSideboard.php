@@ -1,7 +1,7 @@
 <?php
 
-include "Libraries/HTTPLibraries.php";
-include "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
 
 $gameName = $_GET["gameName"];
 if (!IsGameNameValid($gameName)) {
@@ -13,12 +13,11 @@ $playerCharacter = $_GET["playerCharacter"];
 $playerDeck = $_GET["playerDeck"];
 $authKey = $_GET["authKey"];
 
-include "WriteLog.php";
-include "HostFiles/Redirector.php";
-include "CardDictionary.php";
+include DOC_ROOT . "WriteLog.php";
+include DOC_ROOT . "CardDictionary.php";
 
-include "MenuFiles/ParseGamefile.php";
-include "MenuFiles/WriteGamefile.php";
+include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+include DOC_ROOT . "MenuFiles/WriteGamefile.php";
 
 $targetAuth = ($playerID == 1 ? $p1Key : $p2Key);
 if ($authKey != $targetAuth) {
@@ -41,12 +40,12 @@ if ($playerCharacter != "" && $playerDeck != "") //If they submitted before load
   }
   if ($numHands < 1) {
     WriteLog("Unable to submit player " . $playerID . "'s deck. " . $numHands . " weapon currently equipped.");
-    header("Location: " . $redirectPath . "/GameLobby.php?gameName=$gameName&playerID=$playerID");
+    header("Location: " .  "/GameLobby.php?gameName=$gameName&playerID=$playerID");
     exit;
   }
   if ($numHands > 2) {
     WriteLog("Unable to submit player " . $playerID . "'s deck. " . $numHands . " weapons currently equipped.");
-    header("Location: " . $redirectPath . "/GameLobby.php?gameName=$gameName&playerID=$playerID");
+    header("Location: " .  "/GameLobby.php?gameName=$gameName&playerID=$playerID");
     exit;
   }
 
@@ -54,12 +53,12 @@ if ($playerCharacter != "" && $playerDeck != "") //If they submitted before load
   $deckCount = count($playerDeck);
   if ($deckCount < 60 && ($format == "cc" || $format == "compcc")) {
     WriteLog("Unable to submit player " . $playerID . "'s deck. " . $deckCount . " cards selected is under the legal minimum.");
-    header("Location: " . $redirectPath . "/GameLobby.php?gameName=$gameName&playerID=$playerID");
+    header("Location: " .  "/GameLobby.php?gameName=$gameName&playerID=$playerID");
     exit;
   }
   if ($deckCount < 40 && ($format == "blitz" || $format == "compblitz" || $format == "commoner")) {
     WriteLog("Unable to submit player " . $playerID . "'s deck. " . $deckCount . " cards selected is under the legal minimum.");
-    header("Location: " . $redirectPath . "/GameLobby.php?gameName=$gameName&playerID=$playerID");
+    header("Location: " .  "/GameLobby.php?gameName=$gameName&playerID=$playerID");
     exit;
   }
 
@@ -88,7 +87,7 @@ WriteGameFile();
 GamestateUpdated($gameName);
 
 if ($gameStarted == 1) {
-  header("Location: " . $redirectPath . "/Start.php?gameName=$gameName&playerID=$playerID");
+  header("Location: " .  "/Start.php?gameName=$gameName&playerID=$playerID");
 } else {
-  header("Location: " . $redirectPath . "/GameLobby.php?gameName=$gameName&playerID=$playerID");
+  header("Location: " .  "/GameLobby.php?gameName=$gameName&playerID=$playerID");
 }

@@ -1,7 +1,7 @@
 <?php
-include '../includes/functions.inc.php';
-include '../includes/dbh.inc.php';
-include_once '../Libraries/HTTPLibraries.php';
+include DOC_ROOT . '../includes/functions.inc.php';
+include DOC_ROOT . '../includes/dbh.inc.php';
+include_once DOC_ROOT . '../Libraries/HTTPLibraries.php';
 
 SetHeaders();
 

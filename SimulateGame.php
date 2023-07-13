@@ -5,22 +5,21 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 ob_start();
-include "WriteLog.php";
-include "GameLogic.php";
-include "GameTerms.php";
-include "HostFiles/Redirector.php";
-include "Libraries/SHMOPLibraries.php";
-include "Libraries/StatFunctions.php";
-include "Libraries/UILibraries.php";
-include "Libraries/PlayerSettings.php";
-include "Libraries/NetworkingLibraries.php";
-include "AI/CombatDummy.php";
-include "AI/PlayerMacros.php";
-include "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "WriteLog.php";
+include DOC_ROOT . "GameLogic.php";
+include DOC_ROOT . "GameTerms.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "Libraries/StatFunctions.php";
+include DOC_ROOT . "Libraries/UILibraries.php";
+include DOC_ROOT . "Libraries/PlayerSettings.php";
+include DOC_ROOT . "Libraries/NetworkingLibraries.php";
+include DOC_ROOT . "AI/CombatDummy.php";
+include DOC_ROOT . "AI/PlayerMacros.php";
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
 require_once("Libraries/CoreLibraries.php");
-include_once "./includes/dbh.inc.php";
-include_once "./includes/functions.inc.php";
-include_once "APIKeys/APIKeys.php";
+include_once DOC_ROOT . "./includes/dbh.inc.php";
+include_once DOC_ROOT . "./includes/functions.inc.php";
+include_once DOC_ROOT . "APIKeys/APIKeys.php";
 ob_end_clean();
 
 $gameName = $_GET["gameName"];
@@ -42,7 +41,7 @@ $playerID = $commands[0][0];
 
 copy("./Games/" . $gameName . "/startGamestate.txt", "./Games/" . $gameName . "/gamestate.txt");
 
-include "ParseGamestate.php";
+include DOC_ROOT . "ParseGamestate.php";
 $otherPlayer = $currentPlayer == 1 ? 2 : 1;
 $skipWriteGamestate = false;
 $mainPlayerGamestateStillBuilt = 0;
@@ -95,7 +94,7 @@ for($k=0; $k<count($commands); ++$k)
 }
 
 
-//include "WriteGamestate.php";
+//include DOC_ROOT . "WriteGamestate.php";
 
 ?>
 

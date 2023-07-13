@@ -22,7 +22,6 @@ bash start.sh
 
 - NOTE: If you're on windows, the newline characters might mess up this script. It's only two lines so you can just run them manually in Windows Powershell or git Bash:
 ```
-cp -n HostFiles/RedirectorTemplate.php HostFiles/Redirector.php
 docker compose up -d
 ```
 

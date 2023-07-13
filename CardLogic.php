@@ -1,7 +1,7 @@
 <?php
 
-include "CardDictionary.php";
-include "CoreLogic.php";
+include DOC_ROOT . "CardDictionary.php";
+include DOC_ROOT . "CoreLogic.php";
 
 function PummelHit($player = -1, $passable = false, $fromDQ = false)
 {

@@ -1,12 +1,11 @@
 <?php
 
-include "Libraries/SHMOPLibraries.php";
-include "HostFiles/Redirector.php";
-include "CardDictionary.php";
-include_once 'MenuBar.php';
-include_once "./AccountFiles/AccountDatabaseAPI.php";
-include_once './includes/functions.inc.php';
-include_once './includes/dbh.inc.php';
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "CardDictionary.php";
+include_once DOC_ROOT . 'MenuBar.php';
+include_once DOC_ROOT . "./AccountFiles/AccountDatabaseAPI.php";
+include_once DOC_ROOT . './includes/functions.inc.php';
+include_once DOC_ROOT . './includes/dbh.inc.php';
 
 define('ROOTPATH', __DIR__);
 
@@ -70,7 +69,8 @@ if ($handle = opendir($path)) {
         }
       } else if ($currentTime - $lastGamestateUpdate > 900000) //~1 hour
       {
-        if ($autoDeleteGames) {
+        // TODO: Contain environment variables
+        if (getenv('DELETE_GAMES')) {
           deleteDirectory($folder);
           DeleteCache($gameToken);
         }
@@ -85,7 +85,7 @@ if ($handle = opendir($path)) {
     if (file_exists($gf)) {
       $lastRefresh = intval(GetCachePiece($gameName, 2)); //Player 1 last connection time
       if ($lastRefresh != "" && $currentTime - $lastRefresh < 500) {
-        include 'MenuFiles/ParseGamefile.php';
+        include DOC_ROOT . 'MenuFiles/ParseGamefile.php';
         $status = $gameStatus;
         UnlockGamefile();
       } else if ($lastRefresh == "" || $currentTime - $lastRefresh > 900000) //1 hour
@@ -102,7 +102,7 @@ if ($handle = opendir($path)) {
       else if ($format == "livinglegendscc") $formatName = "Open Format ";
       else if ($format == "clash") $formatName = "Clash";
 
-      $link = "<form style='text-align:center;' action='" . $redirectPath . "/JoinGame.php'>";
+      $link = "<form style='text-align:center;' action='" .  "/JoinGame.php'>";
       $link .= "<center><table style='left:40%;'><tr><td style='vertical-align:middle;'>";
       if ($formatName != "") $link .= $formatName . "&nbsp;</td><td>";
       $link .= "</td><td style='vertical-align:middle;'>";

@@ -1,15 +1,15 @@
 <?php
-include_once './AccountSessionAPI.php';
+include_once DOC_ROOT . './AccountSessionAPI.php';
 
-include_once '../Assets/patreon-php-master/src/OAuth.php';
-include_once '../Assets/patreon-php-master/src/PatreonLibraries.php';
-include_once '../Assets/patreon-php-master/src/API.php';
-include_once '../Assets/patreon-php-master/src/PatreonDictionary.php';
-include_once '../includes/functions.inc.php';
-include_once '../includes/dbh.inc.php';
-include_once '../Database/ConnectionManager.php';
-include_once './AccountDatabaseAPI.php';
-include_once '../Libraries/HTTPLibraries.php';
+include_once DOC_ROOT . '../Assets/patreon-php-master/src/OAuth.php';
+include_once DOC_ROOT . '../Assets/patreon-php-master/src/PatreonLibraries.php';
+include_once DOC_ROOT . '../Assets/patreon-php-master/src/API.php';
+include_once DOC_ROOT . '../Assets/patreon-php-master/src/PatreonDictionary.php';
+include_once DOC_ROOT . '../includes/functions.inc.php';
+include_once DOC_ROOT . '../includes/dbh.inc.php';
+include_once DOC_ROOT . '../Database/ConnectionManager.php';
+include_once DOC_ROOT . './AccountDatabaseAPI.php';
+include_once DOC_ROOT . '../Libraries/HTTPLibraries.php';
 
 SetHeaders();
 $response = new stdClass();

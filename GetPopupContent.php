@@ -1,6 +1,6 @@
 <?php
 
-include "./Libraries/HTTPLibraries.php";
+include DOC_ROOT . "./Libraries/HTTPLibraries.php";
 
 $gameName = $_GET["gameName"];
 if (!IsGameNameValid($gameName)) {
@@ -13,17 +13,16 @@ $popupType = $_GET["popupType"];
 $chainLinkIndex = TryGet("chainLinkIndex", "");
 
 ob_start();
-include "./ParseGamestate.php";
-include "./GameLogic.php";
-include "./Libraries/SHMOPLibraries.php";
-include "./Libraries/UILibraries2.php";
-include "./Libraries/StatFunctions.php";
-include "./Libraries/PlayerSettings.php";
-include_once 'Assets/patreon-php-master/src/PatreonDictionary.php';
-include "./GameTerms.php";
-include "./HostFiles/Redirector.php";
-include_once "./includes/dbh.inc.php";
-include_once "./includes/functions.inc.php";
+include DOC_ROOT . "./ParseGamestate.php";
+include DOC_ROOT . "./GameLogic.php";
+include DOC_ROOT . "./Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "./Libraries/UILibraries2.php";
+include DOC_ROOT . "./Libraries/StatFunctions.php";
+include DOC_ROOT . "./Libraries/PlayerSettings.php";
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/PatreonDictionary.php';
+include DOC_ROOT . "./GameTerms.php";
+include_once DOC_ROOT . "./includes/dbh.inc.php";
+include_once DOC_ROOT . "./includes/functions.inc.php";
 ob_end_clean();
 
 session_start();

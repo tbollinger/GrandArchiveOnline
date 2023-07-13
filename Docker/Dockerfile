@@ -12,5 +12,12 @@ RUN pecl install -o -f redis \
     &&  docker-php-ext-enable redis
 RUN docker-php-ext-install zip mysqli pdo pdo_mysql shmop bz2
 
+# Enable mod rewrite for front loader
+RUN a2enmod rewrite
+
+# Fix permissions locally. TODO: Use the database to store data instead of the local filesystem
+RUN usermod -u 1000 www-data
+RUN usermod -G staff www-data
+
 # use sed to change individual php.ini settings here
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini

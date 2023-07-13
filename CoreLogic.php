@@ -1,7 +1,7 @@
 <?php
 
-  include "CardSetters.php";
-  include "CardGetters.php";
+  include DOC_ROOT . "CardSetters.php";
+  include DOC_ROOT . "CardGetters.php";
 
 function EvaluateCombatChain(&$totalAttack, &$totalDefense, &$attackModifiers=[])
 {
@@ -714,7 +714,7 @@ function PlayerWon($playerID)
   global $winner, $turn, $gameName, $p1id, $p2id, $p1uid, $p2uid, $p1IsChallengeActive, $p2IsChallengeActive, $conceded, $currentTurn;
   global $p1DeckLink, $p2DeckLink, $inGameStatus, $GameStatus_Over, $firstPlayer, $p1deckbuilderID, $p2deckbuilderID;
   if($turn[0] == "OVER") return;
-  include_once "./MenuFiles/ParseGamefile.php";
+  include_once DOC_ROOT . "./MenuFiles/ParseGamefile.php";
 
   $winner = $playerID;
   if ($playerID == 1 && $p1uid != "") WriteLog($p1uid . " wins!", $playerID);

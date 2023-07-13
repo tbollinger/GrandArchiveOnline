@@ -42,7 +42,7 @@
       form, that is based on (or derived from) the Work and for which the
       editorial revisions, annotations, elaborations, or other modifications
       represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
+      of this License, Derivative Works shall not include DOC_ROOT . works that remain
       separable from, or merely link (or bind by name) to the interfaces of,
       the Work and Derivative Works thereof.
 
@@ -106,7 +106,7 @@
 
       (d) If the Work includes a "NOTICE" text file as part of its
           distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
+          include DOC_ROOT . a readable copy of the attribution notices contained
           within such NOTICE file, excluding those notices that do not
           pertain to any part of the Derivative Works, in at least one
           of the following places: within a NOTICE text file distributed

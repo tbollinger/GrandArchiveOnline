@@ -2,7 +2,7 @@
 
     <?php
 
-    include 'Libraries/HTTPLibraries.php';
+    include DOC_ROOT . 'Libraries/HTTPLibraries.php';
 
     //We should always have a player ID as a URL parameter
     $gameName = $_GET["gameName"];
@@ -33,18 +33,17 @@
     }
 
     //First we need to parse the game state from the file
-    include "Libraries/SHMOPLibraries.php";
-    include "WriteLog.php";
-    include "ParseGamestate.php";
-    include "GameTerms.php";
-    include "GameLogic.php";
-    include "HostFiles/Redirector.php";
-    include "Libraries/UILibraries2.php";
-    include "Libraries/StatFunctions.php";
-    include "Libraries/PlayerSettings.php";
-    include "MenuFiles/ParseGamefile.php";
-    include_once 'includes/functions.inc.php';
-    include_once 'includes/dbh.inc.php';
+    include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+    include DOC_ROOT . "WriteLog.php";
+    include DOC_ROOT . "ParseGamestate.php";
+    include DOC_ROOT . "GameTerms.php";
+    include DOC_ROOT . "GameLogic.php";
+        include DOC_ROOT . "Libraries/UILibraries2.php";
+    include DOC_ROOT . "Libraries/StatFunctions.php";
+    include DOC_ROOT . "Libraries/PlayerSettings.php";
+    include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+    include_once DOC_ROOT . 'includes/functions.inc.php';
+    include_once DOC_ROOT . 'includes/dbh.inc.php';
 
     if ($currentPlayer == $playerID) {
       $icon = "ready.png";

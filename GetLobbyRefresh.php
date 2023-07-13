@@ -1,10 +1,10 @@
 <?php
 
 
-include "CardDictionary.php";
-include 'Libraries/HTTPLibraries.php';
-include_once "Libraries/PlayerSettings.php";
-include_once "Assets/patreon-php-master/src/PatreonDictionary.php";
+include DOC_ROOT . "CardDictionary.php";
+include DOC_ROOT . 'Libraries/HTTPLibraries.php';
+include_once DOC_ROOT . "Libraries/PlayerSettings.php";
+include_once DOC_ROOT . "Assets/patreon-php-master/src/PatreonDictionary.php";
 
 //We should always have a player ID as a URL parameter
 $gameName = $_GET["gameName"];
@@ -22,10 +22,9 @@ if($lastUpdate == "NaN") $lastUpdate = 0;
 if ($lastUpdate > 10000000) $lastUpdate = 0;
 
 
-include "WriteLog.php";
-include "HostFiles/Redirector.php";
-include "Libraries/UILibraries2.php";
-include "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "WriteLog.php";
+include DOC_ROOT . "Libraries/UILibraries2.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
 
 $currentTime = round(microtime(true) * 1000);
 SetCachePiece($gameName, $playerID + 1, $currentTime);
@@ -59,8 +58,8 @@ while ($lastUpdate != 0 && $cacheVal <= $lastUpdate) {
   }
 }
 
-include "MenuFiles/ParseGamefile.php";
-include "MenuFiles/WriteGamefile.php";
+include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+include DOC_ROOT . "MenuFiles/WriteGamefile.php";
 
 $targetAuth = ($playerID == 1 ? $p1Key : $p2Key);
 if ($authKey != $targetAuth) {
@@ -112,7 +111,7 @@ if ($lastUpdate != 0 && $cacheVal < $lastUpdate) {
         echo("<div>&#10071;This is a private lobby. You will need to invite an opponent.</div><br>");
       }
     }
-    echo ("<div><input class='GameLobby_Input' onclick='copyText()' style='width:40%;' type='text' id='gameLink' value='" . $redirectPath . "/JoinGame.php?gameName=$gameName&playerID=2'><button class='GameLobby_Button' style='margin-left:3px;' onclick='copyText()'>Copy Invite Link</button></div>");
+    echo ("<div><input class='GameLobby_Input' onclick='copyText()' style='width:40%;' type='text' id='gameLink' value='" .  "/JoinGame.php?gameName=$gameName&playerID=2'><button class='GameLobby_Button' style='margin-left:3px;' onclick='copyText()'>Copy Invite Link</button></div>");
   }
 
   $isMobile = IsMobile();

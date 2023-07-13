@@ -2,11 +2,10 @@
 session_start();
 
 ob_start();
-include "HostFiles/Redirector.php";
-include "Libraries/HTTPLibraries.php";
-include "Libraries/SHMOPLibraries.php";
-include_once "Libraries/PlayerSettings.php";
-include_once 'Assets/patreon-php-master/src/PatreonDictionary.php';
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include_once DOC_ROOT . "Libraries/PlayerSettings.php";
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/PatreonDictionary.php';
 ob_end_clean();
 
 $userId = "";
@@ -50,7 +49,7 @@ $p1StartingHealth = $startingHealth;
 
 $filename = "./Games/" . $gameName . "/GameFile.txt";
 $gameFileHandler = fopen($filename, "w");
-include "MenuFiles/WriteGamefile.php";
+include DOC_ROOT . "MenuFiles/WriteGamefile.php";
 WriteGameFile();
 
 $filename = "./Games/" . $gameName . "/gamelog.txt";

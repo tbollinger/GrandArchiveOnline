@@ -1,6 +1,6 @@
 <?php
 
-include 'Libraries/HTTPLibraries.php';
+include DOC_ROOT . 'Libraries/HTTPLibraries.php';
 
 //We should always have a player ID as a URL parameter
 $gameName = $_GET["gameName"];
@@ -29,9 +29,8 @@ if (($playerID == 1 || $playerID == 2) && $authKey == "") {
   if (isset($_COOKIE["lastAuthKey"])) $authKey = $_COOKIE["lastAuthKey"];
 }
 
-include "HostFiles/Redirector.php";
-include "Libraries/SHMOPLibraries.php";
-include "WriteLog.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "WriteLog.php";
 
 SetHeaders();
 
@@ -99,31 +98,31 @@ if ($lastUpdate != 0 && $cacheVal <= $lastUpdate) {
   exit;
 } else {
   //First we need to parse the game state from the file
-  include "ParseGamestate.php";
-  include 'GameLogic.php';
-  include "GameTerms.php";
-  include "Libraries/UILibraries2.php";
-  include "Libraries/StatFunctions.php";
-  include "Libraries/PlayerSettings.php";
+  include DOC_ROOT . "ParseGamestate.php";
+  include DOC_ROOT . 'GameLogic.php';
+  include DOC_ROOT . "GameTerms.php";
+  include DOC_ROOT . "Libraries/UILibraries2.php";
+  include DOC_ROOT . "Libraries/StatFunctions.php";
+  include DOC_ROOT . "Libraries/PlayerSettings.php";
   if ($opponentDisconnected && !IsGameOver()) {
-    include_once "./includes/dbh.inc.php";
-    include_once "./includes/functions.inc.php";
-    include_once "./APIKeys/APIKeys.php";
+    include_once DOC_ROOT . "./includes/dbh.inc.php";
+    include_once DOC_ROOT . "./includes/functions.inc.php";
+    include_once DOC_ROOT . "./APIKeys/APIKeys.php";
     PlayerLoseHealth($otherP, GetHealth($otherP));
-    include "WriteGamestate.php";
+    include DOC_ROOT . "WriteGamestate.php";
   }
   else if($opponentInactive && !IsGameOver()) {
     $currentPlayerActivity = 2;
     WriteLog("The current player is inactive.");
-    include "WriteGamestate.php";
+    include DOC_ROOT . "WriteGamestate.php";
     GamestateUpdated($gameName);
   }
 
   if ($turn[0] == "REMATCH" && intval($playerID) != 3) {
-    include "MenuFiles/ParseGamefile.php";
-    include "MenuFiles/WriteGamefile.php";
+    include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+    include DOC_ROOT . "MenuFiles/WriteGamefile.php";
     if ($gameStatus == $MGS_GameStarted) {
-      include "AI/CombatDummy.php";
+      include DOC_ROOT . "AI/CombatDummy.php";
       $origDeck = "./Games/" . $gameName . "/p1DeckOrig.txt";
       if (file_exists($origDeck)) copy($origDeck, "./Games/" . $gameName . "/p1Deck.txt");
       $origDeck = "./Games/" . $gameName . "/p2DeckOrig.txt";

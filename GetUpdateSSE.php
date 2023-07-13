@@ -1,9 +1,8 @@
 <?php
 
-include 'Libraries/HTTPLibraries.php';
-include "HostFiles/Redirector.php";
-include "Libraries/SHMOPLibraries.php";
-include "WriteLog.php";
+include DOC_ROOT . 'Libraries/HTTPLibraries.php';
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "WriteLog.php";
 
 // array holding allowed Origin domains
 SetHeaders();

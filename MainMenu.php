@@ -1,10 +1,9 @@
 <?php
 
-include_once 'MenuBar.php';
-include "HostFiles/Redirector.php";
-include_once "Libraries/PlayerSettings.php";
-include_once 'Assets/patreon-php-master/src/PatreonDictionary.php';
-include_once "APIKeys/APIKeys.php";
+include_once DOC_ROOT . 'MenuBar.php';
+include_once DOC_ROOT . "Libraries/PlayerSettings.php";
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/PatreonDictionary.php';
+include_once DOC_ROOT . "APIKeys/APIKeys.php";
 
 if (!empty($_SESSION['error'])) {
   $error = $_SESSION['error'];
@@ -52,7 +51,7 @@ $canSeeQueue = isset($_SESSION["useruid"]);
 <div class="ContentWindow" style='width:27%; left:20px; top:60px; bottom:30px; overflow-y:auto;'>
   <?php
   try {
-    include "ServerChecker.php";
+    include DOC_ROOT . "ServerChecker.php";
   } catch (\Exception $e) {
   }
   ?>
@@ -69,7 +68,7 @@ else echo ("<div class='ContentWindow' style='top:225px; left:32%; width:36%; bo
 <h1><?php echo ($createNewGameText); ?></h1>
 
 <?php
-echo ("<form style='width:100%;display:inline-block;' action='" . $redirectPath . "/CreateGame.php'>");
+echo ("<form style='width:100%;display:inline-block;' action='" .  "/CreateGame.php'>");
 
 $favoriteDecks = [];
 if (isset($_SESSION["userid"])) {
@@ -221,5 +220,5 @@ if ($canSeeQueue) {
   }
 </script>
 <?php
-include_once 'Disclaimer.php';
+include_once DOC_ROOT . 'Disclaimer.php';
 ?>

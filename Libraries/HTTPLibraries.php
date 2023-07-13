@@ -27,13 +27,13 @@ function IsDeckLinkValid($deckLink)
 }
 
 
-function GetGameCounter($path = "./")
+function GetGameCounter()
 {
-  $gameIDCounterFile = $path . "HostFiles/GameIDCounter.txt";
+  $gameIDCounterFile = DOC_ROOT . "HostFiles/GameIDCounter.txt";
 
   if (!is_file($gameIDCounterFile)) { // if the game ID counter does not exist, make it.
     $contents = '101';
-    file_put_contents($gameIDCounterFile, $contents);
+    file_put_contents(DOC_ROOT . $gameIDCounterFile, $contents);
   }
 
   $gcFile = fopen($gameIDCounterFile, "r+");
@@ -44,7 +44,7 @@ function GetGameCounter($path = "./")
     ++$attemptCount;
   }
   if ($attemptCount == 30) {
-    header("Location: " . $redirectorPath . "MainMenu.php"); //We never actually got the lock
+    header("Location: MainMenu.php"); //We never actually got the lock
   }
   $counter = intval(fgets($gcFile));
   //$gameName = hash("sha256", $counter);

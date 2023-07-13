@@ -1,13 +1,13 @@
 <?php
-include_once 'MenuBar.php';
+include_once DOC_ROOT . 'MenuBar.php';
 
 require_once './Assets/patreon-php-master/src/OAuth.php';
 require_once './Assets/patreon-php-master/src/API.php';
 require_once './Assets/patreon-php-master/src/PatreonLibraries.php';
-include_once './Assets/patreon-php-master/src/PatreonDictionary.php';
+include_once DOC_ROOT . './Assets/patreon-php-master/src/PatreonDictionary.php';
 require_once './includes/functions.inc.php';
-include_once "./includes/dbh.inc.php";
-include_once "./APIKeys/APIKeys.php";
+include_once DOC_ROOT . "./includes/dbh.inc.php";
+include_once DOC_ROOT . "./APIKeys/APIKeys.php";
 
 
   use Patreon\API;
@@ -47,5 +47,5 @@ include_once "./APIKeys/APIKeys.php";
 
 
 
-include_once 'Disclaimer.php'
+include_once DOC_ROOT . 'Disclaimer.php'
 ?>

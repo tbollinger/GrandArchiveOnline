@@ -1,8 +1,8 @@
 <?php
 
-include "WriteLog.php";
-include "Libraries/HTTPLibraries.php";
-include "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "WriteLog.php";
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
 
 $gameName = $_GET["gameName"];
 if (!IsGameNameValid($gameName)) {
@@ -13,9 +13,8 @@ $playerID = $_GET["playerID"];
 $action = $_GET["action"];
 $authKey = $_GET["authKey"];
 
-include "HostFiles/Redirector.php";
-include "MenuFiles/ParseGamefile.php";
-include "MenuFiles/WriteGamefile.php";
+include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+include DOC_ROOT . "MenuFiles/WriteGamefile.php";
 
 $targetAuth = ($playerID == 1 ? $p1Key : $p2Key);
 if ($authKey != $targetAuth) {
@@ -35,4 +34,4 @@ GamestateUpdated($gameName);
 
 WriteGameFile();
 
-header("Location: " . $redirectPath . "/GameLobby.php?gameName=$gameName&playerID=$playerID");
+header("Location: " .  "/GameLobby.php?gameName=$gameName&playerID=$playerID");

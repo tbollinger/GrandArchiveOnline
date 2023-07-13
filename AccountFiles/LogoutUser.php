@@ -1,5 +1,5 @@
 <?php
-include_once './AccountSessionAPI.php';
+include_once DOC_ROOT . './AccountSessionAPI.php';
 
 ClearLoginSession();
 

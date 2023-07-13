@@ -1,9 +1,9 @@
 <?php
 
-include "./Libraries/HTTPLibraries.php";
-include_once './includes/functions.inc.php';
-include_once "./includes/dbh.inc.php";
-include "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "./Libraries/HTTPLibraries.php";
+include_once DOC_ROOT . './includes/functions.inc.php';
+include_once DOC_ROOT . "./includes/dbh.inc.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
 
 session_start();
 

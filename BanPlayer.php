@@ -1,8 +1,8 @@
 <?php
 
-include "./Libraries/HTTPLibraries.php";
-include_once './includes/functions.inc.php';
-include_once "./includes/dbh.inc.php";
+include DOC_ROOT . "./Libraries/HTTPLibraries.php";
+include_once DOC_ROOT . './includes/functions.inc.php';
+include_once DOC_ROOT . "./includes/dbh.inc.php";
 
 session_start();
 
@@ -21,14 +21,14 @@ $ipToBan = TryGET("ipToBan", "");
 $playerNumberToBan = TryGET("playerNumberToBan", "");
 
 if ($playerToBan != "") {
-  file_put_contents('./HostFiles/bannedPlayers.txt', $playerToBan . "\r\n", FILE_APPEND | LOCK_EX);
+  file_put_contents(DOC_ROOT . 'HostFiles/bannedPlayers.txt', $playerToBan . "\r\n", FILE_APPEND | LOCK_EX);
   BanPlayer($playerToBan);
 }
 if ($ipToBan != "") {
   $gameName = $ipToBan;
-  include './MenuFiles/ParseGamefile.php';
+  include DOC_ROOT . './MenuFiles/ParseGamefile.php';
   $ipToBan = ($playerNumberToBan == "1" ? $hostIP : $joinerIP);
-  file_put_contents('./HostFiles/bannedIPs.txt', $ipToBan . "\r\n", FILE_APPEND | LOCK_EX);
+  file_put_contents(DOC_ROOT . 'HostFiles/bannedIPs.txt', $ipToBan . "\r\n", FILE_APPEND | LOCK_EX);
 }
 
 

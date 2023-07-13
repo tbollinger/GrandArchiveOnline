@@ -1,5 +1,5 @@
 <?php
-include_once 'MenuBar.php';
+include_once DOC_ROOT . 'MenuBar.php';
 ?>
 
 <section class="signup-form">
@@ -45,5 +45,5 @@ include_once 'MenuBar.php';
 </section>
 
 <?php
-include_once 'Disclaimer.php';
+include_once DOC_ROOT . 'Disclaimer.php';
 ?>

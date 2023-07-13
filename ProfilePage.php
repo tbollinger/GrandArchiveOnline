@@ -6,9 +6,9 @@ if (!isset($_SESSION['userid'])) {
   die();
 }
 
-include_once "CardDictionary.php";
-include_once "./Libraries/UILibraries2.php";
-include_once "./APIKeys/APIKeys.php";
+include_once DOC_ROOT . "CardDictionary.php";
+include_once DOC_ROOT . "./Libraries/UILibraries2.php";
+include_once DOC_ROOT . "./APIKeys/APIKeys.php";
 
 if (isset($_SESSION['userid'])) {
   $badges = LoadBadges($_SESSION['userid']);
@@ -29,7 +29,7 @@ if (isset($_SESSION["isPatron"])) {
   echo ("<div class='ContentWindow' style='width: 50%; left:20px; height: calc(90% - 220px); bottom:20px; overflow-y: scroll;'>");
   echo ("<h1>Your Record</h1>");
   $forIndividual = true;
-  include_once "zzGameStats.php";
+  include_once DOC_ROOT . "zzGameStats.php";
   echo ("</div>");
 }
 

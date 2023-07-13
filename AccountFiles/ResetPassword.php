@@ -1,8 +1,8 @@
 <?php
 
-include_once '../Libraries/HTTPLibraries.php';
-include_once './AccountSessionAPI.php';
-include_once '../includes/dbh.inc.php';
+include_once DOC_ROOT . '../Libraries/HTTPLibraries.php';
+include_once DOC_ROOT . './AccountSessionAPI.php';
+include_once DOC_ROOT . '../includes/dbh.inc.php';
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 $selector = $_POST['selector'];

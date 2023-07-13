@@ -544,8 +544,8 @@ function LoadSavedSettings($playerId)
 
 function SendEmail($userEmail, $url)
 {
-	include "../APIKeys/APIKeys.php";
-	require '../vendor/autoload.php';
+	include DOC_ROOT . "../APIKeys/APIKeys.php";
+	require_once(DOC_ROOT . '../vendor/autoload.php');
 
 	$email = new Mail();
 	$email->setFrom("no-reply@fleshandbloodonline.com", "No-Reply");
@@ -577,7 +577,7 @@ function SendEmail($userEmail, $url)
 
 function SendEmailAPI($userEmail, $url)
 {
-	include "../APIKeys/APIKeys.php";
+	include DOC_ROOT . "../APIKeys/APIKeys.php";
 	require '../vendor/autoload.php';
 
 	$email = new Mail();

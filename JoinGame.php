@@ -1,8 +1,7 @@
 <?php
-include_once 'MenuBar.php';
-include "HostFiles/Redirector.php";
-include_once "Libraries/PlayerSettings.php";
-include_once 'Assets/patreon-php-master/src/PatreonDictionary.php';
+include_once DOC_ROOT . 'MenuBar.php';
+include_once DOC_ROOT . "Libraries/PlayerSettings.php";
+include_once DOC_ROOT . 'Assets/patreon-php-master/src/PatreonDictionary.php';
 
 $gameName = $_GET["gameName"];
 if (!IsGameNameValid($gameName)) {
@@ -41,13 +40,13 @@ if (isset($_SESSION["userid"])) {
   <br>
   <h1>Join Game</h1>
   <?php
-  echo ("<form action='" . $redirectPath . "/JoinGameInput.php'>");
+  echo ("<form action='" .  "/JoinGameInput.php'>");
   echo ("<input type='hidden' id='gameName' name='gameName' value='$gameName'>");
   echo ("<input type='hidden' id='playerID' name='playerID' value='$playerID'>");
   ?>
 
   <?php
-  echo ("<form style='display:inline-block;' action='" . $redirectPath . "/CreateGame.php'>");
+  echo ("<form style='display:inline-block;' action='" .  "/CreateGame.php'>");
 
   $favoriteDecks = [];
   if (isset($_SESSION["userid"])) {
@@ -99,5 +98,5 @@ if (isset($_SESSION["userid"])) {
 </div>
 
 <?php
-include_once 'Disclaimer.php'
+include_once DOC_ROOT . 'Disclaimer.php'
 ?>

@@ -1,19 +1,18 @@
 <?php
 
 ob_start();
-include "HostFiles/Redirector.php";
-include "Libraries/HTTPLibraries.php";
-include "Libraries/SHMOPLibraries.php";
-include "Libraries/NetworkingLibraries.php";
-include "GameLogic.php";
-include "GameTerms.php";
-include "Libraries/StatFunctions.php";
-include "Libraries/PlayerSettings.php";
-include "Libraries/UILibraries2.php";
-include "AI/CombatDummy.php";
-include_once "./includes/dbh.inc.php";
-include_once "./includes/functions.inc.php";
-include_once "./MenuFiles/StartHelper.php";
+include DOC_ROOT . "Libraries/HTTPLibraries.php";
+include DOC_ROOT . "Libraries/SHMOPLibraries.php";
+include DOC_ROOT . "Libraries/NetworkingLibraries.php";
+include DOC_ROOT . "GameLogic.php";
+include DOC_ROOT . "GameTerms.php";
+include DOC_ROOT . "Libraries/StatFunctions.php";
+include DOC_ROOT . "Libraries/PlayerSettings.php";
+include DOC_ROOT . "Libraries/UILibraries2.php";
+include DOC_ROOT . "AI/CombatDummy.php";
+include_once DOC_ROOT . "./includes/dbh.inc.php";
+include_once DOC_ROOT . "./includes/functions.inc.php";
+include_once DOC_ROOT . "./MenuFiles/StartHelper.php";
 ob_end_clean();
 
 $gameName = $_GET["gameName"];
@@ -26,8 +25,8 @@ $playerID = $_GET["playerID"];
 if (!file_exists("./Games/" . $gameName . "/GameFile.txt")) exit;
 
 ob_start();
-include "MenuFiles/ParseGamefile.php";
-include "MenuFiles/WriteGamefile.php";
+include DOC_ROOT . "MenuFiles/ParseGamefile.php";
+include DOC_ROOT . "MenuFiles/WriteGamefile.php";
 ob_end_clean();
 session_start();
 if($playerID == 1 && isset($_SESSION["p1AuthKey"])) { $targetKey = $p1Key; $authKey = $_SESSION["p1AuthKey"]; }
@@ -102,15 +101,15 @@ $isReplay = 0;
 WriteCache($gameName, ($currentUpdate + 1) . "!" . $currentTime . "!" . $currentTime . "!-1!-1!" . $currentTime . "!"  . $p1Hero . "!" . $p2Hero . "!" . $visibility . "!" . $isReplay . "!0!0!" . $format . "!" . $MGS_GameStarted); //Initialize SHMOP cache for this game
 
 ob_start();
-include "ParseGamestate.php";
-include "StartEffects.php";
+include DOC_ROOT . "ParseGamestate.php";
+include DOC_ROOT . "StartEffects.php";
 ob_end_clean();
 //Update the game file to show that the game has started and other players can join to spectate
 $gameStatus = $MGS_GameStarted;
 WriteGameFile();
 
 if(isset($gameUIPath)) header("Location: " . $gameUIPath . "?gameName=$gameName&playerID=$playerID");
-else header("Location: " . $redirectPath . "/NextTurn4.php?gameName=$gameName&playerID=$playerID");
+else header("Location: " .  "/NextTurn4.php?gameName=$gameName&playerID=$playerID");
 
 exit;
 
