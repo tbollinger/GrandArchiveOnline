@@ -10,6 +10,10 @@ $dotenv->load();
 
 $dotenv->required('DELETE_GAMES')->isBoolean();
 
+// TODO: Create filesystem abstraction layer for Games until we move them to the DB.
+$gameStorage = new League\Flysystem\Local\LocalFilesystemAdapter(DOC_ROOT . '/Games');
+$games = new League\Flysystem\Filesystem($gameStorage);
+
 function dd($var) {
     echo '<pre>';
     var_dump($var);

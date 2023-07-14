@@ -1,3 +1,4 @@
-
-Games
-HostFiles
+Games/
+HostFiles/*
+mysql-data/*
+```
